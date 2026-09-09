@@ -53,7 +53,7 @@ lv_color_t col(Colour c) {
     cache[TEXT]       = cfg_col("text_colour",       lv_color_white());
     cache[TEXT_DIM]   = cfg_col("text_dim_colour",   lv_palette_main(LV_PALETTE_GREY));
     cache[DISABLED]   = cfg_col("disabled_colour",   lv_palette_darken(LV_PALETTE_GREY, 1));
-    cache[ON_PRIMARY] = cfg_col("on_primary_colour", lv_color_white());
+    cache[ON_PRIMARY] = cfg_col("on_primary_colour", lv_color_hex(0x3B1C2A));
     cache[DANGER]     = cfg_col("danger_colour",     lv_palette_darken(LV_PALETTE_RED, 2));
     cache[WARNING]    = cfg_col("warning_colour",    lv_palette_darken(LV_PALETTE_AMBER, 2));
     ready = true;
@@ -369,7 +369,7 @@ int slider_h() { return scale_r(16); }
 int knob_overhang(int track_h) { return track_h / 2 + knob_pad(); }
 
 bool scrollbars() {
-  static const bool on = cfg_bool("scrollbars", !classic());
+  static const bool on = cfg_bool("scrollbars", false);
   return on;
 }
 
