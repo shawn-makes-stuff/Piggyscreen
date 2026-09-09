@@ -42,18 +42,18 @@ lv_color_t col(Colour c) {
   static lv_color_t cache[COLOUR_COUNT];
   static bool ready = false;
   if (!ready) {
-    // the defaults are the greys the UI shipped with: the LVGL palette greys,
-    // plus the stock dark theme's card colour (0x282b30) for the page, which is
-    // what every full-screen panel showed before it said so explicitly
-    cache[BG]         = cfg_col("background_colour", lv_color_hex(0x282b30));
-    cache[SURFACE]    = cfg_col("surface_colour",    classic() ? cache[BG] : lv_palette_darken(LV_PALETTE_GREY, 4));
-    cache[RAISED]     = cfg_col("raised_colour",     lv_palette_darken(LV_PALETTE_GREY, 3));
-    cache[BORDER]     = cfg_col("border_colour",     lv_palette_darken(LV_PALETTE_GREY, 3));
-    cache[BORDER_DIM] = cfg_col("border_dim_colour", lv_palette_darken(LV_PALETTE_GREY, 2));
-    cache[TEXT]       = cfg_col("text_colour",       lv_color_white());
-    cache[TEXT_DIM]   = cfg_col("text_dim_colour",   lv_palette_main(LV_PALETTE_GREY));
-    cache[DISABLED]   = cfg_col("disabled_colour",   lv_palette_darken(LV_PALETTE_GREY, 1));
-    cache[ON_PRIMARY] = cfg_col("on_primary_colour", lv_color_hex(0x3B1C2A));
+    // the defaults are piggy pink: a pale pink page, lighter pink cards, deeper
+    // pink buttons and hairlines, plum text -- a light theme, so LVGL paints its
+    // own bits (cursors, chart defaults) for a light page too
+    cache[BG]         = cfg_col("background_colour", lv_color_hex(0xF6C1D4));
+    cache[SURFACE]    = cfg_col("surface_colour",    classic() ? cache[BG] : lv_color_hex(0xFCE3EC));
+    cache[RAISED]     = cfg_col("raised_colour",     lv_color_hex(0xF3A6C2));
+    cache[BORDER]     = cfg_col("border_colour",     lv_color_hex(0xEE97B7));
+    cache[BORDER_DIM] = cfg_col("border_dim_colour", lv_color_hex(0xE07FA5));
+    cache[TEXT]       = cfg_col("text_colour",       lv_color_hex(0x4A1A30));
+    cache[TEXT_DIM]   = cfg_col("text_dim_colour",   lv_color_hex(0x8C4A68));
+    cache[DISABLED]   = cfg_col("disabled_colour",   lv_color_hex(0xBF8FA6));
+    cache[ON_PRIMARY] = cfg_col("on_primary_colour", lv_color_white());
     cache[DANGER]     = cfg_col("danger_colour",     lv_palette_darken(LV_PALETTE_RED, 2));
     cache[WARNING]    = cfg_col("warning_colour",    lv_palette_darken(LV_PALETTE_AMBER, 2));
     ready = true;

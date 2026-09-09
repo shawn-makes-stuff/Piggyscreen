@@ -67,8 +67,8 @@ GuppyScreen *GuppyScreen::init(std::function<void(lv_color_t, lv_color_t)> hal_i
   auto ll = conf->get<std::string>("/ui/log_level");
   set_log_level(ll);
 
-  auto primary_color = Theme::cfg_col("primary_colour", lv_color_hex(0xF48FB1));
-  auto secondary_color = Theme::cfg_col("secondary_colour", lv_color_hex(0xE91E63));
+  auto primary_color = Theme::cfg_col("primary_colour", lv_color_hex(0xE0468A));
+  auto secondary_color = Theme::cfg_col("secondary_colour", lv_color_hex(0xC2185B));
 
   LOG_INFO("GrumpyScreen Version: {}-{}", GUPPYSCREEN_BRANCH, GUPPYSCREEN_VERSION);
 
