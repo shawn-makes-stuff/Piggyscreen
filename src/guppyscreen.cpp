@@ -221,18 +221,18 @@ void GuppyScreen::new_theme_apply_cb(lv_theme_t *th, lv_obj_t *obj) {
   // screen to read the primary colour from, and styles() would hang on it.
   if (lv_obj_get_parent(obj) == NULL) return;
   Theme::Styles &s = Theme::styles();
-  // every text button is a flat button; the tap feedback comes with it
-  if (lv_obj_check_type(obj, &lv_btn_class)) {
-    lv_obj_add_style(obj, &s.btn, LV_PART_MAIN);
-    lv_obj_add_style(obj, &s.btn_pressed, LV_PART_MAIN | LV_STATE_PRESSED);
-  }
-  // button matrices (selectors, dialog button rows) and keyboards share the
   // every property lookup walks the object's style list, so leaf widgets that
   // never scroll (labels, images: most objects on screen) skip the bar style
   if (!lv_obj_check_type(obj, &lv_label_class) && !lv_obj_check_type(obj, &lv_img_class)) {
     lv_obj_add_style(obj, &s.scrollbar, LV_PART_SCROLLBAR);
     if (!Theme::scrollbars()) lv_obj_set_scrollbar_mode(obj, LV_SCROLLBAR_MODE_OFF);  // swipe only
   }
+  // every text button is a flat button; the tap feedback comes with it
+  if (lv_obj_check_type(obj, &lv_btn_class)) {
+    lv_obj_add_style(obj, &s.btn, LV_PART_MAIN);
+    lv_obj_add_style(obj, &s.btn_pressed, LV_PART_MAIN | LV_STATE_PRESSED);
+  }
+  // button matrices (selectors, dialog button rows) and keyboards share the
   // key look; the one difference is what CHECKED means
   if (lv_obj_check_type(obj, &lv_btnmatrix_class) || lv_obj_check_type(obj, &lv_keyboard_class)) {
     lv_obj_add_style(obj, &s.key_tray, LV_PART_MAIN);
